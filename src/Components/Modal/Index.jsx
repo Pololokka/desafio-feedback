@@ -29,6 +29,21 @@ const Modal = ({ show, setShow, tags }) => {
             </div>
 
             <div className="modal__checkbox--container">
+              {tags?.map((element) => {
+                return (
+                  <div key={element.key} className="modal__checkbox">
+                    <input
+                      type="checkbox"
+                      id={element.key}
+                      name={element.tag}
+                      onChange={(event) => console.log(event.target.id)}
+                    />
+                    <label htmlFor={element.key} className="texto">
+                      {element.tag}
+                    </label>
+                  </div>
+                );
+              })}
               <div className="modal__checkbox">
                 <input
                   type="checkbox"
