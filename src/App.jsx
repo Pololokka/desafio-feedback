@@ -1,6 +1,7 @@
 import './App.css';
 
 import { useState } from 'react';
+import tags from './Data/tags';
 
 import Button from './Components/Button/Index';
 import Modal from './Components/Modal/Index';
@@ -20,7 +21,7 @@ function App() {
           Clique no botão abaixo para dar feedback no exercício recebido.
         </p>
         <Button value="Dar Feedback!" func={showModal} />
-        <Modal show={show} setShow={setShow} />
+        <Modal show={show} setShow={setShow} tags={tags} />
       </main>
     </>
   );

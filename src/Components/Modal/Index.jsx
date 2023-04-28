@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, setShow }) => {
+const Modal = ({ show, setShow, tags }) => {
   if (show) {
     return (
       <div className="modal">
@@ -13,9 +13,46 @@ const Modal = ({ show, setShow }) => {
             </h2>
           </div>
           <div className="modal__body">
-            <p className="texto">select vai aqui</p>
-            <p className="texto">tags vão vai aqui</p>
-            <p className="texto">textArea vai aqui</p>
+            <div>
+              <label htmlFor="status" className="texto">
+                Este exercício foi:
+              </label>
+              <select
+                name="status"
+                className="texto"
+                onChange={(event) => console.log(event.target.value)}
+              >
+                <option value=""></option>
+                <option value="aprovado">Aprovado</option>
+                <option value="reprovado">Reprovado</option>
+              </select>
+            </div>
+
+            <div className="modal__checkbox--container">
+              <div className="modal__checkbox">
+                <input
+                  type="checkbox"
+                  id="teste"
+                  name="teste"
+                  onChange={(event) => console.log(event.target.id)}
+                />
+                <label htmlFor="teste" className="texto">
+                  teste
+                </label>
+              </div>
+            </div>
+
+            <label htmlFor="text-feedback" className="texto">
+              Escreva seu feedback em até 300 caracteres
+            </label>
+            <textarea
+              name="text-feedback"
+              id="text-feedback"
+              cols="40"
+              rows="5"
+              className="texto modal-textArea"
+              maxLength={300}
+            ></textarea>
           </div>
           <div className="modal__footer">
             <Button value="Enviar!" func={() => setShow(!show)} />
