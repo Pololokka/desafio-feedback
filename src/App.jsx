@@ -14,7 +14,8 @@ function App() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    console.log('event');
+    showModal(setShow, show);
+    console.log(event);
   };
 
   //console.log(feedback);
@@ -31,12 +32,7 @@ function App() {
           value="Dar Feedback!"
           func={() => showModal(setShow, show)}
         />
-        <Modal
-          show={show}
-          setShow={setShow}
-          formSubmit={formSubmit}
-          tags={tags}
-        />
+        <Modal show={show} formSubmit={formSubmit} tags={tags} />
       </main>
     </>
   );

@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, setShow, formSubmit, tags }) => {
+const Modal = ({ show, formSubmit, tags }) => {
   if (show) {
     return (
       <div className="modal">
@@ -12,7 +12,7 @@ const Modal = ({ show, setShow, formSubmit, tags }) => {
               Preencha o formulário!
             </h2>
           </div>
-          <form onSubmit={() => console.log('teste')} className="modal__body">
+          <form onSubmit={formSubmit} className="modal__body">
             <div>
               <label htmlFor="status" className="texto">
                 Este exercício foi:
@@ -58,7 +58,7 @@ const Modal = ({ show, setShow, formSubmit, tags }) => {
               maxLength={300}
             ></textarea>
 
-            <Button type="submit" value="Enviar!" func={() => setShow(!show)} />
+            <Button type="submit" value="Enviar!" />
           </form>
         </div>
       </div>
