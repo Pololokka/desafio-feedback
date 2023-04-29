@@ -1,7 +1,7 @@
-const Button = ({ value, func }) => {
+const Button = ({ type, value, func }) => {
   return (
     <input
-      type="button"
+      type={type}
       value={value}
       onClick={func}
       className="texto btn__geral"

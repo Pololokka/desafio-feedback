@@ -1,6 +1,8 @@
 import './App.css';
 
 import { useState } from 'react';
+import { showModal } from './Func/modal';
+import { initialFeedback } from './Func/feedback';
 import tags from './Data/tags';
 
 import Button from './Components/Button/Index';
@@ -8,10 +10,14 @@ import Modal from './Components/Modal/Index';
 
 function App() {
   const [show, setShow] = useState(false);
+  const [feedback, setFeedback] = useState(initialFeedback);
 
-  const showModal = () => {
-    setShow(!show);
+  const formSubmit = (event) => {
+    event.preventDefault();
+    console.log('event');
   };
+
+  //console.log(feedback);
 
   return (
     <>
@@ -20,8 +26,17 @@ function App() {
         <p className="texto">
           Clique no botão abaixo para dar feedback no exercício recebido.
         </p>
-        <Button value="Dar Feedback!" func={showModal} />
-        <Modal show={show} setShow={setShow} tags={tags} />
+        <Button
+          type="button"
+          value="Dar Feedback!"
+          func={() => showModal(setShow, show)}
+        />
+        <Modal
+          show={show}
+          setShow={setShow}
+          formSubmit={formSubmit}
+          tags={tags}
+        />
       </main>
     </>
   );

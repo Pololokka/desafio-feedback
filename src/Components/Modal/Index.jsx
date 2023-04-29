@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, setShow, tags }) => {
+const Modal = ({ show, setShow, formSubmit, tags }) => {
   if (show) {
     return (
       <div className="modal">
@@ -12,7 +12,7 @@ const Modal = ({ show, setShow, tags }) => {
               Preencha o formulário!
             </h2>
           </div>
-          <div className="modal__body">
+          <form onSubmit={() => console.log('teste')} className="modal__body">
             <div>
               <label htmlFor="status" className="texto">
                 Este exercício foi:
@@ -28,10 +28,10 @@ const Modal = ({ show, setShow, tags }) => {
               </select>
             </div>
 
-            <div className="modal__checkbox--container">
+            <ul className="modal__checkbox--container">
               {tags?.map((element) => {
                 return (
-                  <div key={element.key} className="modal__checkbox">
+                  <li key={element.key} className="modal__checkbox">
                     <input
                       type="checkbox"
                       id={element.key}
@@ -41,21 +41,10 @@ const Modal = ({ show, setShow, tags }) => {
                     <label htmlFor={element.key} className="texto">
                       {element.tag}
                     </label>
-                  </div>
+                  </li>
                 );
               })}
-              <div className="modal__checkbox">
-                <input
-                  type="checkbox"
-                  id="teste"
-                  name="teste"
-                  onChange={(event) => console.log(event.target.id)}
-                />
-                <label htmlFor="teste" className="texto">
-                  teste
-                </label>
-              </div>
-            </div>
+            </ul>
 
             <label htmlFor="text-feedback" className="texto">
               Escreva seu feedback em até 300 caracteres
@@ -68,10 +57,9 @@ const Modal = ({ show, setShow, tags }) => {
               className="texto modal-textArea"
               maxLength={300}
             ></textarea>
-          </div>
-          <div className="modal__footer">
-            <Button value="Enviar!" func={() => setShow(!show)} />
-          </div>
+
+            <Button type="submit" value="Enviar!" func={() => setShow(!show)} />
+          </form>
         </div>
       </div>
     );
