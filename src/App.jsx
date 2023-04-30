@@ -2,7 +2,7 @@ import './App.css';
 
 import { useState } from 'react';
 import { showModal } from './Func/modal';
-import { initialFeedback } from './Func/feedback';
+import { handleFeedback, sendFeedback } from './Func/feedback';
 import { useForm } from 'react-hook-form';
 import tags from './Data/tags';
 
@@ -13,11 +13,11 @@ function App() {
   const { register, handleSubmit, reset } = useForm();
 
   const [show, setShow] = useState(false);
-  const [feedback, setFeedback] = useState(initialFeedback);
 
-  const formSubmit = (event) => {
+  const formSubmit = (data) => {
     showModal(setShow, show);
-    console.log(event);
+    handleFeedback(data);
+    sendFeedback();
     reset();
   };
 
