@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, formSubmit, tags }) => {
+const Modal = ({ show, formSubmit, useForm, register, handleSubmit, tags }) => {
   if (show) {
     return (
       <div className="modal">
@@ -12,15 +12,19 @@ const Modal = ({ show, formSubmit, tags }) => {
               Preencha o formulário!
             </h2>
           </div>
-          <form onSubmit={formSubmit} className="modal__body">
+          <form
+            onSubmit={handleSubmit((data) => formSubmit(data))}
+            className="modal__body"
+          >
             <div>
               <label htmlFor="status" className="texto">
                 Este exercício foi:
               </label>
               <select
                 name="status"
+                id="status"
                 className="texto"
-                onChange={(event) => console.log(event.target.value)}
+                {...register('status')}
               >
                 <option value=""></option>
                 <option value="aprovado">Aprovado</option>
@@ -36,7 +40,8 @@ const Modal = ({ show, formSubmit, tags }) => {
                       type="checkbox"
                       id={element.key}
                       name={element.tag}
-                      onChange={(event) => console.log(event.target.id)}
+                      {...register('tags')}
+                      value={element.key}
                     />
                     <label htmlFor={element.key} className="texto">
                       {element.tag}
@@ -56,6 +61,7 @@ const Modal = ({ show, formSubmit, tags }) => {
               rows="5"
               className="texto modal-textArea"
               maxLength={300}
+              {...register('comment')}
             ></textarea>
 
             <Button type="submit" value="Enviar!" />
