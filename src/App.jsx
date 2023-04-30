@@ -38,7 +38,6 @@ function App() {
         <Modal
           show={show}
           formSubmit={formSubmit}
-          useForm={useForm}
           register={register}
           handleSubmit={handleSubmit}
           tags={tags}

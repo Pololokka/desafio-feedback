@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, formSubmit, useForm, register, handleSubmit, tags }) => {
+const Modal = ({ show, formSubmit, register, handleSubmit, tags }) => {
   if (show) {
     return (
       <div className="modal">
