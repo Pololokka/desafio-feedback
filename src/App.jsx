@@ -10,7 +10,12 @@ import Button from './Components/Button/Index';
 import Modal from './Components/Modal/Index';
 
 function App() {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const [show, setShow] = useState(false);
 
@@ -20,8 +25,6 @@ function App() {
     sendFeedback();
     reset();
   };
-
-  //console.log(feedback);
 
   return (
     <>
@@ -40,6 +43,7 @@ function App() {
           formSubmit={formSubmit}
           register={register}
           handleSubmit={handleSubmit}
+          errors={errors}
           tags={tags}
         />
       </main>

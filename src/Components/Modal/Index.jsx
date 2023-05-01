@@ -2,7 +2,7 @@ import './Styles.css';
 
 import Button from '../Button/Index';
 
-const Modal = ({ show, formSubmit, register, handleSubmit, tags }) => {
+const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
   if (show) {
     return (
       <div className="modal">
@@ -24,13 +24,17 @@ const Modal = ({ show, formSubmit, register, handleSubmit, tags }) => {
                 name="status"
                 id="status"
                 className="texto"
-                {...register('status')}
+                {...register('status', {
+                  required: 'Favor selecionar um status para o exercício',
+                })}
               >
                 <option value=""></option>
                 <option value="aprovado">Aprovado</option>
                 <option value="reprovado">Reprovado</option>
               </select>
             </div>
+
+            <p className="texto">{errors.status?.message}</p>
 
             <ul className="modal__checkbox--container">
               {tags?.map((element) => {
