@@ -9,13 +9,19 @@ import tags from './Data/tags';
 import Button from './Components/Button/Index';
 import Modal from './Components/Modal/Index';
 
+const defaultForm = {
+  status: '',
+  tags: [],
+  comment: '',
+};
+
 function App() {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: defaultForm });
 
   const [show, setShow] = useState(false);
 

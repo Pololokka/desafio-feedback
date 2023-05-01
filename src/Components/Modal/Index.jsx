@@ -44,7 +44,7 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
                       type="checkbox"
                       id={element.key}
                       name={element.tag}
-                      {...register('tags')}
+                      {...register('tags', { required: 'marque uma opção' })}
                       value={element.key}
                     />
                     <label htmlFor={element.key} className="texto">
@@ -54,6 +54,8 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
                 );
               })}
             </ul>
+
+            <p className="texto">{errors.tags?.message}</p>
 
             <label htmlFor="text-feedback" className="texto">
               Escreva seu feedback em até 300 caracteres
