@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { showModal } from './Func/modal';
 import { handleFeedback, sendFeedback } from './Func/feedback';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './Schema/schema';
 import tags from './Data/tags';
 
 import Button from './Components/Button/Index';
@@ -21,11 +23,12 @@ function App() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ defaultValues: defaultForm });
+  } = useForm({ defaultValues: defaultForm, resolver: yupResolver(schema) });
 
   const [show, setShow] = useState(false);
 
   const formSubmit = (data) => {
+    console.log('formSubmit');
     showModal(setShow, show);
     handleFeedback(data);
     sendFeedback();

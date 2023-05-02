@@ -1,6 +1,7 @@
 import './Styles.css';
 
 import Button from '../Button/Index';
+import { date } from 'yup';
 
 const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
   if (show) {
@@ -24,9 +25,7 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
                 name="status"
                 id="status"
                 className="texto"
-                {...register('status', {
-                  required: 'Favor selecionar um status para o exercício',
-                })}
+                {...register('status')}
               >
                 <option value=""></option>
                 <option value="aprovado">Aprovado</option>
@@ -44,7 +43,7 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
                       type="checkbox"
                       id={element.key}
                       name={element.tag}
-                      {...register('tags', { required: 'marque uma opção' })}
+                      {...register('tags')}
                       value={element.key}
                     />
                     <label htmlFor={element.key} className="texto">
@@ -69,6 +68,8 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
               maxLength={300}
               {...register('comment')}
             ></textarea>
+
+            <p className="texto">{errors.comment?.message}</p>
 
             <Button type="submit" value="Enviar!" />
           </form>
