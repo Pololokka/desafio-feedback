@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './Schema/schema';
 import tags from './Data/tags';
 import { useTranslation } from 'react-i18next';
+import { translationPaths } from './I18n';
 
 import Button from './Components/Button/Index';
 import Modal from './Components/Modal/Index';
@@ -42,21 +43,24 @@ function App() {
   return (
     <>
       <Changer
-        titlePath="nav.title"
-        lang1Path="nav.langF"
-        lang2Path="nav.langS"
-        lang3Path="nav.langT"
+        titlePath={translationPaths.nav.title}
+        lang1Path={translationPaths.nav.langF}
+        lang2Path={translationPaths.nav.langS}
+        lang3Path={translationPaths.nav.langT}
       />
       <main className="App">
-        <h1 className="titulo titulo-hover">{t('main.title')}</h1>
-        <p className="texto">{t('main.text')}</p>
+        <h1 className="titulo titulo-hover">
+          {t(translationPaths.main.title)}
+        </h1>
+        <p className="texto">{t(translationPaths.main.text)}</p>
         <Button
           type="button"
-          value="Dar Feedback!"
+          value={t(translationPaths.btnMain.value)}
           func={() => showModal(setShow, show)}
         />
         <Modal
           show={show}
+          translationPath={translationPaths}
           formSubmit={formSubmit}
           register={register}
           handleSubmit={handleSubmit}

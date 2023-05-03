@@ -1,16 +1,27 @@
 import './Styles.css';
 
 import Button from '../Button/Index';
+import { useTranslation } from 'react-i18next';
 import { date } from 'yup';
 
-const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
+const Modal = ({
+  show,
+  translationPath,
+  formSubmit,
+  register,
+  handleSubmit,
+  errors,
+  tags,
+}) => {
+  const { t } = useTranslation();
+
   if (show) {
     return (
       <div className="modal">
         <div className="modal__container">
           <div className="modal__header">
             <h2 className="subtitulo subtitulo-hover">
-              Preencha o formulário!
+              {t(translationPath.modal.title)}
             </h2>
           </div>
           <form
@@ -19,7 +30,7 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
           >
             <div>
               <label htmlFor="status" className="texto">
-                Este exercício foi:
+                {t(translationPath.modal.statusTitle)}
               </label>
               <select
                 name="status"
@@ -28,12 +39,18 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
                 {...register('status')}
               >
                 <option value=""></option>
-                <option value="aprovado">Aprovado</option>
-                <option value="reprovado">Reprovado</option>
+                <option value="aprovado">
+                  {t(translationPath.modal.statusOpt1)}
+                </option>
+                <option value="reprovado">
+                  {t(translationPath.modal.statusOpt2)}
+                </option>
               </select>
             </div>
 
-            <p className="texto">{errors.status?.message}</p>
+            {errors.status && (
+              <p className="texto">{t(translationPath.errors.status)}</p>
+            )}
 
             <ul className="modal__checkbox--container">
               {tags?.map((element) => {
@@ -54,10 +71,12 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
               })}
             </ul>
 
-            <p className="texto">{errors.tags?.message}</p>
+            {errors.tags && (
+              <p className="texto">{t(translationPath.errors.tagMin)}</p>
+            )}
 
             <label htmlFor="text-feedback" className="texto">
-              Escreva seu feedback em até 300 caracteres
+              {t(translationPath.modal.comment)}
             </label>
             <textarea
               name="text-feedback"
@@ -69,9 +88,11 @@ const Modal = ({ show, formSubmit, register, handleSubmit, errors, tags }) => {
               {...register('comment')}
             ></textarea>
 
-            <p className="texto">{errors.comment?.message}</p>
+            {errors.comment && (
+              <p className="texto">{t(translationPath.errors.comment)}</p>
+            )}
 
-            <Button type="submit" value="Enviar!" />
+            <Button type="submit" value={t(translationPath.modal.btnModal)} />
           </form>
         </div>
       </div>

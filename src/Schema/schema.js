@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const schema = yup.object().shape({
-  status: yup.string().required('Escolha uma opção!'),
+  status: yup.string().required('Selecione uma opção!'),
   tags: yup
     .array()
     .of(yup.string())
