@@ -23,12 +23,6 @@ const Changer = ({ titlePath, lang1Path, lang2Path, lang3Path }) => {
         className="texto btn__geral"
         onClick={() => handleChangeLang('en-us')}
       />
-      <input
-        type="button"
-        value={t(lang3Path)}
-        className="texto btn__geral"
-        onClick={() => handleChangeLang('es')}
-      />
     </nav>
   );
 };

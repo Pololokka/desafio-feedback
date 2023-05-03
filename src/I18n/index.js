@@ -40,6 +40,21 @@ export const translationPaths = {
     tagReq: 'errors.tagReq',
     comment: 'errors.comment',
   },
+  tags: {
+    'Muito legal': 'tags.tag1',
+    'Show, arrasou!': 'tags.tag2',
+    Gostei: 'tags.tag3',
+    'Ótima iniciativa': 'tags.tag4',
+    'Você pode melhorar': 'tags.tag5',
+    'Atenção nos detalhes': 'tags.tag6',
+    Força: 'tags.tag7',
+    'Wow, mandou bem': 'tags.tag8',
+    'Contém erros': 'tags.tag9',
+    'Quebra de padrões': 'tags.tag10',
+    Refazer: 'tags.tag11',
+    'Melhorar descrição': 'tags.tag12',
+    'Há algo não permitido': 'tags.tag13',
+  },
 };
 
 export default i18n;

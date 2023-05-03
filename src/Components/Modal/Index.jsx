@@ -64,7 +64,7 @@ const Modal = ({
                       value={element.key}
                     />
                     <label htmlFor={element.key} className="texto">
-                      {element.tag}
+                      {t(translationPath.tags[element.tag])}
                     </label>
                   </li>
                 );
