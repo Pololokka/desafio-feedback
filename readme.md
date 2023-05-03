@@ -1,8 +1,8 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![technology - React](https://img.shields.io/badge/React-orange) ![technology - JS](https://img.shields.io/badge/JavaScript-yellow)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![technology - React](https://img.shields.io/badge/React-orange) ![technology - JS](https://img.shields.io/badge/JavaScript-yellow) ![technology - useForm](https://img.shields.io/badge/useForm-orange) ![technology - YUP](https://img.shields.io/badge/YUP-green) ![technology - I18N](https://img.shields.io/badge/I18N-blue)
 
-# Link Tree
+# Formulário de Feedback
 
-link tree
+Página onde o usuário pode dar seu feedback sobre uma atividade
 
 ## Tecnologias
 
@@ -10,12 +10,19 @@ link tree
 - CSS
 - JavaScript
 - React
+- useForm
+- YUP
+- I18N
 
 ## Escopo do projeto
 
 ### Home
 
-Página onde o usuário pode adicionar seus links
+Página onde o usuário pode mudar a língua, assim como é apresentado a um botão, para começar o feedback.
+
+Ao clicar no botão, um modal abre, exibindo um formulário. O usuário precisa preencher o campo de status("Este exercício foi:"), sem preencher este campo, o formulário não pode ser enviado.
+
+Dependendo da resposta no campo de status, os outros campos adquirem comportamento diferente. Caso a resposta seja "Reprovado", o usuário precisa marcar ao menos uma tag, ou deixar um comentário(ainda podendo fazer ambos). Caso a respota seja "Aprovado", nenhum dos outros campos é obrigatório, mas o usuário ainda pode preenchê-los como preferir.
 
 ## Sobre
 
