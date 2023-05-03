@@ -7,9 +7,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './Schema/schema';
 import tags from './Data/tags';
+import { useTranslation } from 'react-i18next';
 
 import Button from './Components/Button/Index';
 import Modal from './Components/Modal/Index';
+import Changer from './Components/Changer/Index';
 
 const defaultForm = {
   status: '',
@@ -27,6 +29,8 @@ function App() {
 
   const [show, setShow] = useState(false);
 
+  const { t } = useTranslation();
+
   const formSubmit = (data) => {
     console.log('formSubmit');
     showModal(setShow, show);
@@ -37,11 +41,15 @@ function App() {
 
   return (
     <>
+      <Changer
+        titlePath="nav.title"
+        lang1Path="nav.langF"
+        lang2Path="nav.langS"
+        lang3Path="nav.langT"
+      />
       <main className="App">
-        <h1 className="titulo titulo-hover">Feedback de Exercícios</h1>
-        <p className="texto">
-          Clique no botão abaixo para dar feedback no exercício recebido.
-        </p>
+        <h1 className="titulo titulo-hover">{t('main.title')}</h1>
+        <p className="texto">{t('main.text')}</p>
         <Button
           type="button"
           value="Dar Feedback!"
